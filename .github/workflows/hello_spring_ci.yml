@@ -1,11 +1,13 @@
 name: Hello Spring CI
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "docker/app1-hello/springboot/hello-spring"
 
-#  workflow_dispatch:
+env:
+  IMAGE_NAME: darkbot776/hello-spring
 
 jobs:
   build-test:
@@ -63,5 +65,7 @@ jobs:
         with:
           context: docker/app1-hello/springboot/hello-spring
           push: true
-          tags: darkbot776/hello-spring:${{ steps.vars.outputs.TAG }}
+          tags: |
+            ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.TAG }}
+            ${{ env.IMAGE_NAME }}:latest
 
