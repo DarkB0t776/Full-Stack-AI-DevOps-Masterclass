@@ -1,0 +1,54 @@
+# Build outputs
+target/
+build/
+out/
+*.class
+*.jar
+*.war
+
+# Maven
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle (in case you switch later)
+.gradle/
+gradlew
+gradlew.bat
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+*.swp
+
+# Version control
+.git/
+.gitignore
+.gitattributes
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment / secrets
+.env
+.env.*
+
+# Docker files themselves
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+README.md
+docs/
+
+# Test reports
+test-results/
+coverage/
