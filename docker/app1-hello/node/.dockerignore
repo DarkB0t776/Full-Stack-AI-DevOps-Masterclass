@@ -1,0 +1,55 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Version control
+.git
+.gitignore
+
+# Editor/IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Build output (remove if you COPY these in intentionally)
+dist
+build
+coverage
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Tests
+test
+tests
+__tests__
+*.test.js
+*.spec.js
+
+# Docs
+README.md
+CHANGELOG.md
+LICENSE
+
+# Misc
+.editorconfig
+.eslintrc*
+.prettierrc*
