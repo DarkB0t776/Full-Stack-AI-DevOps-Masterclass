@@ -1,7 +1,10 @@
 name: Hello Spring CI
 
 on:
-  push
+  push:
+    paths:
+      - "docker/app1-hello/springboot/hello-spring"
+
 #  workflow_dispatch:
 
 jobs:
@@ -51,10 +54,14 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Set Docker Image Tag
+        id: vars
+        run: echo "TAG=1.0.${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v7
         with:
           context: docker/app1-hello/springboot/hello-spring
           push: true
-          tags: darkbot776/hello-spring:1.0
+          tags: darkbot776/hello-spring:${{ steps.vars.outputs.TAG }}
 
