@@ -52,5 +52,9 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and Push Docker Image
-        run: echo ""
+        uses: docker/build-push-action@v7
+        with:
+          context: docker/app1-hello/springboot/hello-spring
+          push: true
+          tags: darkbot776/hello-spring:1.0
 
