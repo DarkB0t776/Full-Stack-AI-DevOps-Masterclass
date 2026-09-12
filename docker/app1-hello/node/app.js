@@ -6,7 +6,7 @@ const HOSTNAME = process.env.HOSTNAME || require('os').hostname();
 
 app.get("/", (req, res) => {
   res.json({
-    message: "Hello from Simple App (Node1)",
+    message: "Hello from Simple App (Nodeh)",
     env: ENV,
     container: HOSTNAME
   });
