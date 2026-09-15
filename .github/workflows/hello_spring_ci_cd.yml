@@ -99,7 +99,7 @@ jobs:
         run: curl -s http://localhost:4566 || exit 1
 
       - name: Update kubeconfig for EKS
-        run: echo aws eks update-kubeconfig --name hello-cluster --region us-east-1 --endpoint-url http://localhost:4566
+        run: aws eks update-kubeconfig --name hello-cluster --region us-east-1 --endpoint-url http://localhost:4566
 
       - name: Check kubectl context
         run: kubectl get nodes
