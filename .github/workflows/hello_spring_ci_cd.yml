@@ -98,6 +98,9 @@ jobs:
       - name: Verify connection with floci
         run: curl -s http://localhost:4566 || exit 1
 
+      - name: Create cluster
+        run: aws eks create-cluster --name hello-cluster --role-arn ${{ secrets.AWS_ROLE_TO_ASSUME }} --resources-vpc-config subnetIds=subnet-default-us-east-1-c,subnet-default-us-east-1-b,securityGroupIds=sg-default-us-east-1
+        
       - name: Update kubeconfig for EKS
         run: aws eks update-kubeconfig --name hello-cluster --region us-east-1 --endpoint-url http://localhost:4566
 
