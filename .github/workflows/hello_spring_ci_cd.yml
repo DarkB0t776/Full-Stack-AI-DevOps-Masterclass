@@ -95,17 +95,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Check floci ENVs
-        run: "printenv | grep 'AWS'"
-
       - name: Verify connection with floci
         run: curl -s http://localhost:4566 || exit 1
 
+      - name: Update kubeconfig for EKS
+        run: echo aws eks update-kubeconfig --name hello-cluster --region us-east-1 --endpoint-url http://localhost:4566
 
+      - name: Check kubectl context
+        run: kubectl get nodes
 
-#      - name: Update kubeconfig for EKS
-#        run: echo aws eks update-kubeconfig --name hello-cluster --region us-east-1
-#
-#
 #      - name: Deploy to AWS (Kubernetes)
-#        run: echo ""
+#        run: echo aws eks create-cluster 
