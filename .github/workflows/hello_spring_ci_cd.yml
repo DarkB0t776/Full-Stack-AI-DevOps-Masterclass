@@ -72,6 +72,12 @@ jobs:
   deploy-to-aws-eks:
     runs-on: ubuntu-latest
     needs: docker-build-push
+    env:
+      AWS_ENDPOINT_URL: http://localhost:4566
+      AWS_ACCESS_KEY_ID: mock-key
+      AWS_SECRET_ACCESS_KEY: mock-secret
+      AWS_DEFAULT_REGION: us-east-1
+
     services:
       floci:
         image: floci/floci:latest
@@ -89,8 +95,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Import floci ENVs
-        run: "eval $(floci env) && printenv | grep 'AWS'"
+      - name: Check floci ENVs
+        run: "printenv | grep 'AWS'"
 
       - name: Verify connection with floci
         run: curl -s http://localhost:4566 || exit 1
