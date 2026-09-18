@@ -67,11 +67,10 @@ jobs:
 
       - name: Get next version
         id: version
-        uses: reecetech/version-increment@v2026.8.4
+        uses: christian-draeger/increment-semantic-version@1.2.3
         with:
-          scheme: semver
-          increment: patch 
-          
+          current-version: 1.0.0
+          version-fragment: 'patch'
       - name: Login to DockerHub
         uses: docker/login-action@v4
         with:
@@ -84,7 +83,7 @@ jobs:
           context: ${{ matrix.service.path }}
           push: true
           tags: | 
-            ${{ vars.DOCKERHUB_USERNAME }}/${{ matrix.service.docker_name }}:${{ steps.version.outputs.version }}
+            ${{ vars.DOCKERHUB_USERNAME }}/${{ matrix.service.docker_name }}:${{ steps.version.outputs.next-version }}
             ${{ vars.DOCKERHUB_USERNAME }}/${{ matrix.service.docker_name }}:latest
 
   deploy-aws-eks:
