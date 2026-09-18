@@ -1,6 +1,7 @@
 name: Tax Calculator App CI/CD to AWS EKS
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - working
