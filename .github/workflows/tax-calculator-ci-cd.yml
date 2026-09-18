@@ -53,7 +53,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/chekcout@v4
+        uses: actions/checkout@v4
 
       - name: Setup JDK
         uses: actions/setup-java@v6
