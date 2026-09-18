@@ -105,7 +105,7 @@ jobs:
         uses: azure/setup-kubectl@v4
       
       - name: Update kubectl config
-        run: aws eks update-config --name hello-cluster --region us-east-1
+        run: aws eks update-kubeconfig --name hello-cluster --region us-east-1
 
       - name: Verify Connection
         run: kubectl get nodes
